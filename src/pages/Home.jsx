@@ -29,21 +29,21 @@ const heroSlides = [
     titleLine1: 'Education Is A',
     highlight: 'Backbone',
     titleLine2: 'Of Life',
-    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1600&auto=format&fit=crop',
+    image: '/image/2024/489868029_1697889801036880_4011985048527441810_n.jpg',
   },
   {
     eyebrow: 'Premier Private Higher Education In Kandy',
     titleLine1: 'Unlock Your',
     highlight: 'Potential',
     titleLine2: 'At BMI Campus',
-    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1600&auto=format&fit=crop',
+    image: '/image/2024/489877858_1697888831036977_1563440393688646331_n.jpg',
   },
   {
-    eyebrow: 'Computing · AI · Business · Hospitality',
+    eyebrow: 'BICT · BBA · MBA',
     titleLine1: 'Build A Career',
     highlight: 'That Matters',
     titleLine2: 'Starting Today',
-    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop',
+    image: '/image/2025/625208406_1942789496546908_5697848532008759434_n.jpg',
   },
 ]
 
@@ -52,7 +52,7 @@ const heroCards = [
     type: 'card',
     icon: GraduationCap,
     title: 'Learn Courses First',
-    desc: 'Explore Computing, AI, Business and Hospitality programs built for real careers.',
+    desc: 'Explore BICT, BBA, and MBA pathways built around real careers and industry needs.',
   },
   {
     type: 'image',
@@ -68,34 +68,26 @@ const heroCards = [
 
 const programs = [
   {
-    tag: 'Computing',
-    title: 'BSc (Hons) in Computer Science',
-    desc: 'A hands-on foundation in software engineering, systems design, and modern development practices.',
+    tag: 'BICT',
+    title: 'BICT (Hons) in Information and Communication Technology',
+    desc: 'A hands-on foundation in networking, software development, database systems, and digital transformation.',
     duration: '3 Years',
     mode: 'Full-Time',
     image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop',
   },
   {
-    tag: 'AI & Data Science',
-    title: 'BSc (Hons) in AI & Data Science',
-    desc: 'Machine learning, data engineering, and applied AI taught through real industry projects.',
+    tag: 'BBA',
+    title: 'BBA (Hons) in Business Administration',
+    desc: 'Choose one of four pathways: HRM, Marketing, Accounting & Finance, or Hotel Tourism.',
     duration: '3 Years',
     mode: 'Full-Time',
     image: 'https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=800&auto=format&fit=crop',
   },
   {
-    tag: 'Business',
-    title: 'BA (Hons) in Business Administration',
-    desc: 'Strategy, finance, and management fundamentals for the next generation of Sri Lankan leaders.',
-    duration: '3 Years',
-    mode: 'Full-Time',
-    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop',
-  },
-  {
-    tag: 'Hospitality',
-    title: 'Diploma in Hospitality Management',
-    desc: 'Practical training in guest service, operations, and event management for a global career.',
-    duration: '18 Months',
+    tag: 'MBA',
+    title: 'MBA in Business Management',
+    desc: 'Postgraduate leadership study focused on strategy, finance, operations, and organizational growth.',
+    duration: '1 Year',
     mode: 'Full-Time',
     image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800&auto=format&fit=crop',
   },
@@ -110,19 +102,19 @@ const events = [
 const testimonials = [
   {
     name: 'Nadeesha Perera',
-    role: 'BSc Computer Science, 2025',
+    role: 'BICT, 2025',
     quote:
       'The lecturers actually know the industry, not just the textbook. I had two internship offers before I even graduated.',
   },
   {
     name: 'Ashan Fernando',
-    role: 'AI & Data Science, 2024',
+    role: 'MBA, 2024',
     quote:
       'Small class sizes meant real feedback on every project. The AI labs here are genuinely well equipped.',
   },
   {
     name: 'Dilki Wickramasinghe',
-    role: 'Business Administration, 2025',
+    role: 'BBA, 2025',
     quote:
       'From day one it felt like they were preparing us for real jobs, not just exams. Kandy is also a beautiful place to study.',
   },
@@ -131,7 +123,7 @@ const testimonials = [
 const faqs = [
   {
     q: 'What programs does BMI Campus offer?',
-    a: 'We offer degree and diploma programs across Computing, AI & Data Science, Business Administration, and Hospitality Management, each designed with strong industry input.',
+    a: 'We offer BICT, BBA, and MBA programs. The BBA program includes four specializations: HRM, Marketing, Accounting & Finance, and Hotel Tourism.',
   },
   {
     q: 'Are BMI Campus qualifications recognized?',
@@ -421,7 +413,7 @@ const Home = () => {
       
 
       {/* Upcoming Events Section */}
-      <section className="relative py-24 bg-slate-950 overflow-hidden">
+      {/* <section className="relative py-24 bg-slate-950 overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.06] pointer-events-none"
           style={{
@@ -470,7 +462,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Testimonials Section */}
       <section className="py-24 bg-white">
@@ -557,7 +549,7 @@ const Home = () => {
             </div>
             <Heart className="relative mx-auto text-accent mb-4" size={32} />
             <h2 className="relative text-2xl sm:text-3xl font-extrabold text-white mb-3">Ready to start your journey?</h2>
-            <p className="relative text-primary-light/80 text-sm sm:text-base max-w-xl mx-auto mb-8 className=text-white">
+            <p className="relative text-primary-light/80 text-sm sm:text-base max-w-xl mx-auto mb-8 text-white">
               Applications for the next intake are open. Talk to our admissions team and find the right program for you.
             </p>
             <Link

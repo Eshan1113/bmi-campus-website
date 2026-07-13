@@ -79,8 +79,7 @@ const Contact = () => {
                                     </div>
                                     <div className="space-y-1">
                                         <h4 className="font-bold text-slate-800 text-sm">Admissions Hotline</h4>
-                                        <p className="text-xs text-slate-500 leading-relaxed">081 220 0932 / 081 497 6976</p>
-                                        <p className="text-xs text-slate-400">Registry Fax: 081 220 0933</p>
+                                        <p className="text-xs text-slate-500 leading-relaxed">081 292 2046</p>
                                     </div>
                                 </div>
 
@@ -91,7 +90,7 @@ const Contact = () => {
                                     </div>
                                     <div className="space-y-1">
                                         <h4 className="font-bold text-slate-800 text-sm">General Inquiries</h4>
-                                        <p className="text-xs text-slate-500 leading-relaxed">info@iba.lk</p>
+                                        <p className="text-xs text-slate-500 leading-relaxed">bmikandy@gmail.com</p>
                                     </div>
                                 </div>
                             </div>

@@ -11,7 +11,8 @@ import {
     BookOpen,
     Filter,
     Search,
-    Brain,
+    Briefcase,
+    Building2,
     Coins,
     Sparkles
 } from 'lucide-react'
@@ -20,83 +21,76 @@ const Courses = () => {
     const [selectedCategory, setSelectedCategory] = useState('All')
     const [searchTerm, setSearchTerm] = useState('')
 
-    const categories = ['All', 'Computer Science', 'AI', 'Business', 'Management', 'Hotel']
+    const categories = ['All', 'BICT', 'BBA', 'MBA']
 
     const courses = [
         {
             id: 1,
-            title: 'BSc (Hons) in Software Engineering',
-            category: 'Computer Science',
+            title: 'BICT (Hons) in Information and Communication Technology',
+            category: 'BICT',
             icon: <Code size={24} />,
-            description: 'Learn modern programming paradigms, data structures, algorithms, and build enterprise full-stack web and cloud systems.',
+            description: 'Build core skills in networking, systems, programming, and digital infrastructure for modern ICT careers.',
             duration: '3 Years',
             level: 'Bachelor\'s',
             students: '420+',
             rating: 4.8,
-            features: ['Full-Stack Web Dev', 'Cloud Computing', 'Database Architectures', 'Software Quality'],
+            features: ['Programming', 'Networking', 'Databases', 'Systems Analysis'],
             image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop',
             price: 'LKR 350,000',
             popular: true
         },
         {
             id: 2,
-            title: 'BSc (Hons) in AI & Data Science',
-            category: 'AI',
-            icon: <Brain size={24} />,
-            description: 'Master neural networks, deep learning models, natural language processing, and advanced machine learning predictive pipelines.',
+            title: 'BBA (Hons) in Business Administration',
+            category: 'BBA',
+            icon: <GraduationCap size={24} />,
+            description: 'Choose a business pathway that matches your goals: HRM, Marketing, Accounting & Finance, or Hotel Tourism.',
             duration: '3 Years',
             level: 'Bachelor\'s',
-            students: '290+',
+            students: '380+',
             rating: 4.9,
-            features: ['Machine Learning', 'Big Data Systems', 'NLP & CV', 'Statistical Analysis'],
-            image: 'https://images.unsplash.com/photo-1527474305487-b87b222841cc?w=600&h=400&fit=crop',
-            price: 'LKR 380,000',
+            features: ['HRM', 'Marketing', 'Accounting & Finance', 'Hotel Tourism'],
+            image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=400&fit=crop',
+            price: 'LKR 280,000',
             popular: true
         },
         {
             id: 3,
-            title: 'BBA (Hons) in Business Management',
-            category: 'Business',
-            icon: <GraduationCap size={24} />,
-            description: 'Acquire organizational leadership insights, financial reporting practices, modern marketing skills, and entrepreneurship tactics.',
-            duration: '3 Years',
-            level: 'Bachelor\'s',
-            students: '380+',
-            rating: 4.7,
-            features: ['Strategic Management', 'Marketing Tactics', 'Accounting Standards', 'HR Operations'],
-            image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop',
-            price: 'LKR 280,000',
-            popular: false
-        },
-        {
-            id: 4,
-            title: 'MBA in International Business',
-            category: 'Management',
+            title: 'MBA in Business Management',
+            category: 'MBA',
             icon: <Globe size={24} />,
-            description: 'Prestige postgraduate management study centered on global supply chains, international trade law, and corporate finance.',
+            description: 'Postgraduate leadership study focused on strategy, finance, operations, and organizational growth.',
             duration: '1 Year',
             level: 'Master\'s',
             students: '180+',
             rating: 4.8,
-            features: ['Global Finance', 'Supply Chain Analytics', 'Multinational Strategy', 'Corporate Ethics'],
+            features: ['Leadership', 'Corporate Strategy', 'Finance', 'Operations'],
             image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=400&fit=crop',
             price: 'LKR 450,000',
             popular: false
+        }
+    ]
+
+    const bbaSpecializations = [
+        {
+            name: 'HRM',
+            icon: <Users size={18} />,
+            description: 'People, culture, hiring, and employee development.'
         },
         {
-            id: 5,
-            title: 'BSc (Hons) in Hospitality Management',
-            category: 'Hotel',
-            icon: <Award size={24} />,
-            description: 'Excellence training in resort operations, customer relations, food services management, and global tourism marketing.',
-            duration: '3 Years',
-            level: 'Bachelor\'s',
-            students: '250+',
-            rating: 4.7,
-            features: ['Hotel Operations', 'Event Coordination', 'Food & Beverage', 'Tourism Marketing'],
-            image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop',
-            price: 'LKR 320,000',
-            popular: false
+            name: 'Marketing',
+            icon: <Briefcase size={18} />,
+            description: 'Branding, digital campaigns, and market growth.'
+        },
+        {
+            name: 'Accounting & Finance',
+            icon: <Building2 size={18} />,
+            description: 'Reporting, budgeting, and financial decision-making.'
+        },
+        {
+            name: 'Hotel Tourism',
+            icon: <Globe size={18} />,
+            description: 'Hospitality operations, guest service, and tourism trends.'
         }
     ]
 
@@ -265,6 +259,34 @@ const Courses = () => {
                                 </div>
                             </motion.div>
                         ))}
+                    </motion.div>
+
+                    <motion.div
+                        className="mt-16 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true }}
+                    >
+                        <div className="max-w-2xl">
+                            <span className="text-xs font-bold uppercase tracking-widest text-primary block">BBA Pathways</span>
+                            <h2 className="text-2xl font-extrabold text-slate-900 mt-2">Choose your BBA specialization</h2>
+                            <p className="text-slate-500 text-sm mt-2 leading-relaxed">
+                                The BBA program is divided into four focused pathways so students can align their studies with the career they want.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-8">
+                            {bbaSpecializations.map((item) => (
+                                <div key={item.name} className="rounded-2xl border border-slate-200 bg-slate-50 p-5 hover:border-primary/20 hover:shadow-sm transition-all">
+                                    <div className="w-10 h-10 rounded-xl bg-primary/5 text-primary flex items-center justify-center mb-4">
+                                        {item.icon}
+                                    </div>
+                                    <h3 className="font-bold text-slate-900 text-sm">{item.name}</h3>
+                                    <p className="text-slate-500 text-xs leading-relaxed mt-2">{item.description}</p>
+                                </div>
+                            ))}
+                        </div>
                     </motion.div>
 
                     {/* No results placeholder */}

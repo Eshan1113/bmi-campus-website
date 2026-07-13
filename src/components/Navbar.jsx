@@ -33,14 +33,14 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Gallery', path: '/gallery' },
+    { name: 'Student', path: '/student' },
     { name: 'Contact', path: '/contact' },
   ]
 
   const faculties = [
-    { name: 'Computing', path: '/courses' },
-    { name: 'AI & Data Science', path: '/courses' },
-    { name: 'Business Administration', path: '/courses' },
-    { name: 'Hospitality Management', path: '/courses' },
+    { name: 'BICT', path: '/courses' },
+    { name: 'BBA', path: '/courses' },
+    { name: 'MBA', path: '/courses' },
   ]
 
   const isActive = (path) => location.pathname === path
@@ -57,17 +57,17 @@ const Navbar = () => {
               </span>
               No 14, Asgiriya Road, Kandy, Sri Lanka
             </span>
-            <a href="mailto:info@iba.lk" className="flex items-center gap-2 text-slate-500 hover:text-primary transition-colors">
+            <a href="mailto:bmikandy@gmail.com" className="flex items-center gap-2 text-slate-500 hover:text-primary transition-colors">
               <span className="w-6 h-6 rounded-full bg-slate-100 text-primary flex items-center justify-center">
                 <Mail size={12} />
               </span>
-              info@iba.lk
+              bmikandy@gmail.com
             </a>
-            <a href="tel:0812200932" className="flex items-center gap-2 text-slate-500 hover:text-primary transition-colors">
+            <a href="tel:0812922046" className="flex items-center gap-2 text-slate-500 hover:text-primary transition-colors">
               <span className="w-6 h-6 rounded-full bg-slate-100 text-primary flex items-center justify-center">
                 <Phone size={12} />
               </span>
-              081 220 0932
+              081 292 2046
             </a>
           </div>
 
@@ -111,7 +111,7 @@ const Navbar = () => {
               to="/"
               className="relative z-10 flex items-center gap-3 bg-white rounded-b-xl md:rounded-xl shadow-lg px-4 py-3 md:-mt-2 md:mb-[-14px]"
             >
-              <img src="/logo_neww.png" alt="BMI Campus" className="h-7 w-auto object-contain" />
+              <img src="/logo.jpg" alt="BMI Campus" className="h-7 w-auto object-contain" />
               <span className="hidden sm:flex flex-col leading-tight border-l border-slate-200 pl-3">
                 <span className="text-[10px] font-bold tracking-[0.15em] text-accent-dark uppercase">Est. 2002</span>
                 <span className="text-[11px] text-slate-400">Kandy, Sri Lanka</span>
@@ -345,8 +345,8 @@ const Navbar = () => {
                 {/* Mobile utility info */}
                 <div className="pt-3 mt-3 border-t border-white/10 space-y-2 text-xs text-white/60">
                   <span className="flex items-center gap-2"><MapPin size={13} /> No 14, Asgiriya Road, Kandy</span>
-                  <span className="flex items-center gap-2"><Phone size={13} /> 081 220 0932</span>
-                  <span className="flex items-center gap-2"><Mail size={13} /> info@iba.lk</span>
+                  <span className="flex items-center gap-2"><Phone size={13} /> 081 292 2046</span>
+                  <span className="flex items-center gap-2"><Mail size={13} /> bmikandy@gmail.com</span>
                 </div>
               </div>
             </motion.div>
