@@ -29,7 +29,11 @@ const Contact = () => {
             {/* Contact Hero banner */}
             <section className="pt-16 pb-20 border-b border-slate-200/50 bg-gradient-to-br from-white via-[#f8fafc] to-accent-light/10">
                 <div className="max-w-4xl mx-auto px-4 text-center space-y-4">
-                    <span className="text-xs font-bold uppercase tracking-widest text-primary block">Get In Touch</span>
+                    <div className="inline-flex items-center gap-3">
+                        <span className="h-px w-8 bg-primary/40" />
+                        <span className="text-xs font-bold uppercase tracking-widest text-primary">Get In Touch</span>
+                        <span className="h-px w-8 bg-primary/40" />
+                    </div>
                     <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
                         Contact <span className="text-gradient">BMI Campus</span>
                     </h1>
@@ -53,7 +57,9 @@ const Contact = () => {
                             viewport={{ once: true }}
                         >
                             <div className="space-y-2">
-                                <span className="text-xs font-bold uppercase tracking-widest text-primary block">Information</span>
+                                <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary">
+                                    <span className="h-px w-6 bg-primary/40" /> Information
+                                </span>
                                 <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">Our Offices in Kandy</h2>
                                 <p className="text-slate-500 text-xs leading-relaxed max-w-sm">
                                     Feel free to visit our campus registry office directly or get in touch via phone lines during regular operational hours.
@@ -62,7 +68,7 @@ const Contact = () => {
 
                             <div className="space-y-6">
                                 {/* Address Card */}
-                                <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                                <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md hover:border-primary/20 transition-all">
                                     <div className="p-3 rounded-xl bg-primary/5 text-primary mt-1 shrink-0">
                                         <MapPin size={20} />
                                     </div>
@@ -73,7 +79,7 @@ const Contact = () => {
                                 </div>
 
                                 {/* Phone Card */}
-                                <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                                <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md hover:border-primary/20 transition-all">
                                     <div className="p-3 rounded-xl bg-primary/5 text-primary mt-1 shrink-0">
                                         <Phone size={20} />
                                     </div>
@@ -84,7 +90,7 @@ const Contact = () => {
                                 </div>
 
                                 {/* Email Card */}
-                                <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                                <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md hover:border-primary/20 transition-all">
                                     <div className="p-3 rounded-xl bg-primary/5 text-primary mt-1 shrink-0">
                                         <Mail size={20} />
                                     </div>

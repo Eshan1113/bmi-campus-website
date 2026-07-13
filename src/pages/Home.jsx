@@ -43,7 +43,7 @@ const heroSlides = [
     titleLine1: 'Build A Career',
     highlight: 'That Matters',
     titleLine2: 'Starting Today',
-    image: '/image/2025/625208406_1942789496546908_5697848532008759434_n.jpg',
+    image: '/image/2024/490781239_1697888867703640_1152399088567124652_n.jpg',
   },
 ]
 

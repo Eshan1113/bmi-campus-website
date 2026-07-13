@@ -19,6 +19,21 @@ import {
 const About = () => {
     const [activeTimeline, setActiveTimeline] = useState(0)
     const [visibleStats, setVisibleStats] = useState(false)
+    const [currentCEO, setCurrentCEO] = useState(0)
+
+    const ceoImages = [
+        "ceo.jpg",
+        "image/2025/623257098_1942790736546784_5479781099705082577_n.jpg",
+        "image/2024/490768786_1697889951036865_4072620445188414262_n.jpg"
+    ]
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentCEO((prev) => (prev + 1) % ceoImages.length)
+        }, 3000)
+
+        return () => clearInterval(timer)
+    }, [])
 
     const timelineEvents = [
         {
@@ -97,37 +112,15 @@ const About = () => {
     }, [timelineEvents.length])
 
     return (
-        <div className="bg-slate-50 min-h-screen">
+        <div className="bg-slate-70 min-h-screen">
             {/* Hero Section */}
             <section className="relative overflow-hidden pt-16 pb-24 border-b border-slate-200/50 bg-gradient-to-br from-white via-[#f8fafc] to-accent-light/10">
                 {/* Floating Shapes Background */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    {[...Array(6)].map((_, i) => (
-                        <motion.div
-                            key={i}
-                            className="absolute rounded-full bg-primary/5"
-                            animate={{
-                                y: [-15, 15, -15],
-                                rotate: [0, 180, 360],
-                                scale: [1, 1.08, 1]
-                            }}
-                            transition={{
-                                duration: 6 + i,
-                                repeat: Infinity,
-                                ease: "easeInOut",
-                                delay: i * 0.4
-                            }}
-                            style={{
-                                width: `${40 + i * 30}px`,
-                                height: `${40 + i * 30}px`,
-                                left: `${10 + i * 15}%`,
-                                top: `${20 + (i % 2) * 35}%`
-                            }}
-                        />
-                    ))}
-                </div>
+                
+                
 
-                <div className="max-w-4xl mx-auto px-4 text-center relative z-10 space-y-6">
+
+                <div className="max-w-4xl mx-auto px-4 text-center relative z-10 space-y-4">
                     <motion.div
                         className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/5 border border-primary/10 rounded-full text-xs font-bold text-primary"
                         initial={{ scale: 0 }}
@@ -175,73 +168,7 @@ const About = () => {
             </section>
 
             {/* Timeline Journey Section */}
-            <section className="py-24 bg-white border-b border-slate-200/50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center max-w-3xl mx-auto mb-16">
-                        <span className="text-xs font-bold uppercase tracking-widest text-primary mb-2 block">Our History</span>
-                        <h2 className="text-3xl font-bold tracking-tight text-slate-900">Our Journey Through Time</h2>
-                    </div>
-
-                    <div className="relative">
-                        {/* Vertical Timeline Line */}
-                        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 -translate-x-1/2" />
-
-                        {/* Events Container */}
-                        <div className="space-y-12 relative">
-                            {timelineEvents.map((event, index) => {
-                                const isEven = index % 2 === 0
-                                const isHighlighted = activeTimeline === index
-
-                                return (
-                                    <motion.div
-                                        key={index}
-                                        className={`flex flex-col md:flex-row items-stretch md:justify-between relative ${isEven ? '' : 'md:flex-row-reverse'}`}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.5 }}
-                                        viewport={{ once: true }}
-                                    >
-                                        {/* Card Column */}
-                                        <div className="w-full md:w-[46%] pl-10 md:pl-0">
-                                            <motion.div
-                                                className={`p-6 rounded-2xl border transition-all duration-300 cursor-pointer ${
-                                                    isHighlighted
-                                                        ? 'bg-white border-primary/20 shadow-premium ring-1 ring-primary/5'
-                                                        : 'bg-slate-50/50 border-slate-200/60 opacity-80 hover:opacity-100 hover:bg-white hover:shadow-md'
-                                                }`}
-                                                onClick={() => setActiveTimeline(index)}
-                                                whileHover={{ y: -2 }}
-                                            >
-                                                <div className="flex items-center gap-3 mb-2">
-                                                    <span className="text-sm font-extrabold text-primary px-2.5 py-0.5 rounded-full bg-primary/5">{event.year}</span>
-                                                    <h3 className="font-bold text-slate-800 text-base">{event.title}</h3>
-                                                </div>
-                                                <p className="text-xs text-slate-500 leading-relaxed mt-2">{event.description}</p>
-                                            </motion.div>
-                                        </div>
-
-                                        {/* Timeline Node Column */}
-                                        <div className="absolute left-4 md:left-1/2 -translate-x-1/2 top-4 z-10 flex items-center justify-center">
-                                            <motion.div
-                                                className={`w-9 h-9 rounded-full flex items-center justify-center border text-white shadow-sm transition-all duration-300 ${
-                                                    isHighlighted 
-                                                        ? 'bg-primary border-primary scale-110' 
-                                                        : 'bg-slate-200 border-slate-300 text-slate-500 hover:bg-slate-300'
-                                                }`}
-                                            >
-                                                {event.icon}
-                                            </motion.div>
-                                        </div>
-
-                                        {/* Spacing for layout alignment */}
-                                        <div className="hidden md:block w-[46%]" />
-                                    </motion.div>
-                                )
-                            })}
-                        </div>
-                    </div>
-                </div>
-            </section>
+          
 
             {/* Mission, Vision, Values */}
             <section className="py-24 bg-slate-50">
@@ -306,40 +233,6 @@ const About = () => {
                 </div>
             </section>
 
-            {/* Achievements Section */}
-            <section className="py-24 bg-white border-t border-slate-200/50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center max-w-3xl mx-auto mb-16">
-                        <span className="text-xs font-bold uppercase tracking-widest text-primary mb-2 block">Facts & Figures</span>
-                        <h2 className="text-3xl font-bold tracking-tight text-slate-900">Our Achievements at a Glance</h2>
-                    </div>
-
-                    <motion.div
-                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
-                        onViewportEnter={() => setVisibleStats(true)}
-                        viewport={{ once: true }}
-                    >
-                        {achievements.map((stat, index) => (
-                            <motion.div
-                                key={index}
-                                className="p-6 rounded-2xl border border-slate-200/60 text-center relative overflow-hidden group shadow-sm hover:shadow-premium bg-slate-50/50 hover:bg-white transition-all duration-300"
-                                initial={{ scale: 0.9, opacity: 0 }}
-                                whileInView={{ scale: 1, opacity: 1 }}
-                                transition={{ delay: index * 0.1, duration: 0.5 }}
-                                viewport={{ once: true }}
-                            >
-                                <div className="mx-auto w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 mb-4 group-hover:bg-primary group-hover:text-white transition-all duration-350">
-                                    {stat.icon}
-                                </div>
-                                <h3 className="text-3xl font-extrabold text-slate-900 tracking-tight mb-2">
-                                    <AnimatedCounter end={stat.number} suffix={stat.suffix} />
-                                </h3>
-                                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">{stat.label}</p>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </div>
-            </section>
 
             {/* Message from Chairman */}
             <section className="py-24 bg-slate-50 border-t border-slate-200/50">
@@ -353,29 +246,36 @@ const About = () => {
                     >
                         {/* Chairman Photo */}
                         <div className="lg:col-span-5 relative min-h-[350px] lg:min-h-full bg-slate-950">
-                            <img
-                                src="ceo.jpg"
-                                alt="Chairman / CEO Mr. Sisira Wickramasinghe"
-                                className="w-full h-full object-cover object-top opacity-90"
-                            />
+                            <AnimatePresence mode="wait">
+                                <motion.img
+                                    key={currentCEO}
+                                    src={ceoImages[currentCEO]}
+                                    alt="Chairman / CEO Mr. Sisira Wickramasinghe"
+                                    className="w-full h-full object-cover object-top opacity-90 absolute inset-0"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.8 }}
+                                />
+                            </AnimatePresence>
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent flex flex-col justify-end p-8" />
                             <div className="absolute bottom-6 left-6 right-6 text-white z-10">
-                                <h4 className="text-lg font-bold">Mr. Sisira Wickramasinghe</h4>
+                                <h4 className="text-lg font-bold text-white">Mr. Sisira Wickramasinghe</h4>
                                 <span className="text-xs text-slate-350 font-medium block mt-0.5">Chairman / CEO</span>
-                                <span className="text-[9px] text-slate-400 block mt-2 font-medium leading-relaxed uppercase">
+                                <span className="text-[9px] text-slate-400 block mt-2 font-medium leading-relaxed uppercase text-white">
                                     M.Com(R)(KLN), MBA(Malaysia), B.Sc. Business Admin (USJP)
                                 </span>
                             </div>
                         </div>
 
                         {/* Message Details */}
-                        <div className="lg:col-span-7 p-8 sm:p-12 space-y-6 flex flex-col justify-between">
+                        <div className="lg:col-span-7 p-6 sm:p-8 space-y-4 flex flex-col justify-between">
                             <div className="space-y-4">
                                 <div className="flex items-center gap-3 text-primary">
                                     <Quote size={32} className="opacity-40 shrink-0" />
                                     <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">Leading with Vision, Inspiring Academic Excellence</h3>
                                 </div>
-                                <div className="space-y-4 text-slate-650 text-sm leading-relaxed">
+                                <div className="space-y-3 text-slate-650 text-sm leading-relaxed">
                                     <p>
                                         As CEO and Chairman, I am delighted to welcome you to BMI Campus. Over the years, this institution has nurtured ambitious minds and trained students whose professional careers thrive inside both local and global industries. We have established support systems and centers across Sri Lanka to guarantee tertiary learning opportunities stay within reach for every local student.
                                     </p>

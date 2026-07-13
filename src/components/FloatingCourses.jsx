@@ -32,7 +32,7 @@ const FloatingWhatsApp = () => {
 
       {/* WhatsApp Button */}
       <motion.a
-        href="https://wa.me/94712344553"
+        href="https://wa.me/740040073"
         target="_blank"
         rel="noopener noreferrer"
         className="relative flex items-center justify-center"
