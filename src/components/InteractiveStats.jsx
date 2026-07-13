@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { TrendingUp, Users, Award, Globe } from 'lucide-react'
-import './InteractiveStats.css'
 
 const InteractiveStats = () => {
     const [activeIndex, setActiveIndex] = useState(0)
@@ -9,47 +8,47 @@ const InteractiveStats = () => {
 
     const stats = [
         {
-            icon: <Users size={32} />,
-            value: 15000,
+            icon: <Users size={28} />,
+            value: 1000,
             suffix: '+',
             label: 'Students Enrolled',
-            description: 'Active learners from around the world',
-            color: '#667eea',
+            description: 'Active learners pursuing their higher education goals',
+            color: '#0b3a75', // primary blue
             trend: '+12%'
         },
         {
-            icon: <Award size={32} />,
+            icon: <Award size={28} />,
             value: 98,
             suffix: '%',
             label: 'Success Rate',
-            description: 'Students achieving their goals',
-            color: '#764ba2',
+            description: 'Graduates successfully completing their degrees',
+            color: '#0ea5e9', // accent blue
             trend: '+5%'
         },
         {
-            icon: <Globe size={32} />,
-            value: 50,
+            icon: <Globe size={28} />,
+            value: 15,
             suffix: '+',
-            label: 'Countries',
-            description: 'Global reach and diversity',
-            color: '#f093fb',
-            trend: '+8%'
+            label: 'Global Partners',
+            description: 'Renowned international university collaborations',
+            color: '#10b981', // green
+            trend: '+3'
         },
         {
-            icon: <TrendingUp size={32} />,
+            icon: <TrendingUp size={28} />,
             value: 95,
             suffix: '%',
             label: 'Employment Rate',
-            description: 'Graduates in their field',
-            color: '#667eea',
-            trend: '+3%'
+            description: 'Graduates securing employment within six months',
+            color: '#d97706', // gold
+            trend: '+4%'
         }
     ]
 
     useEffect(() => {
         const interval = setInterval(() => {
             setActiveIndex((prev) => (prev + 1) % stats.length)
-        }, 3000)
+        }, 4000)
 
         return () => clearInterval(interval)
     }, [stats.length])
@@ -78,87 +77,107 @@ const InteractiveStats = () => {
 
     return (
         <motion.div
-            className="interactive-stats"
-            initial={{ opacity: 0, y: 50 }}
+            className="w-full max-w-6xl mx-auto px-4 py-12"
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             onViewportEnter={() => setIsVisible(true)}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
         >
-            <div className="stats-container">
-                <div className="stats-grid">
-                    {stats.map((stat, index) => (
-                        <motion.div
-                            key={index}
-                            className={`stat-card ${activeIndex === index ? 'active' : ''}`}
-                            style={{ '--stat-color': stat.color }}
-                            whileHover={{ scale: 1.05 }}
-                            onClick={() => setActiveIndex(index)}
-                        >
-                            <div className="stat-icon">
-                                {stat.icon}
-                            </div>
-
-                            <div className="stat-content">
-                                <div className="stat-number">
-                                    <AnimatedNumber value={stat.value} />
-                                    <span className="stat-suffix">{stat.suffix}</span>
-                                    <div className="stat-trend">
-                                        <TrendingUp size={16} />
-                                        {stat.trend}
+            <div className="flex flex-col lg:flex-row items-center gap-12">
+                {/* Left Side Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full lg:w-2/3">
+                    {stats.map((stat, index) => {
+                        const isSelected = activeIndex === index
+                        return (
+                            <motion.div
+                                key={index}
+                                className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 relative overflow-hidden border ${
+                                    isSelected 
+                                        ? 'bg-white border-primary/20 shadow-premium ring-1 ring-primary/10' 
+                                        : 'bg-white/60 border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300'
+                                }`}
+                                whileHover={{ scale: 1.02 }}
+                                onClick={() => setActiveIndex(index)}
+                            >
+                                <div className="flex items-start justify-between mb-4">
+                                    <div 
+                                        className="p-3 rounded-xl text-white shadow-sm"
+                                        style={{ backgroundColor: stat.color }}
+                                    >
+                                        {stat.icon}
                                     </div>
+                                    <span 
+                                        className="text-xs font-semibold px-2 py-1 rounded-full flex items-center gap-1"
+                                        style={{ backgroundColor: `${stat.color}15`, color: stat.color }}
+                                    >
+                                        <TrendingUp size={12} />
+                                        {stat.trend}
+                                    </span>
                                 </div>
 
-                                <div className="stat-label">{stat.label}</div>
-                                <div className="stat-description">{stat.description}</div>
-                            </div>
+                                <div className="space-y-1">
+                                    <div className="text-3xl font-bold text-slate-900 tracking-tight flex items-baseline">
+                                        <AnimatedNumber value={stat.value} />
+                                        <span className="text-xl font-semibold ml-0.5" style={{ color: stat.color }}>{stat.suffix}</span>
+                                    </div>
+                                    <h4 className="text-sm font-semibold text-slate-800">{stat.label}</h4>
+                                    <p className="text-xs text-slate-500 leading-relaxed mt-1">{stat.description}</p>
+                                </div>
 
-                            <div className="stat-glow"></div>
-                            <div className="stat-progress">
-                                <motion.div
-                                    className="progress-bar"
-                                    initial={{ width: 0 }}
-                                    animate={{ width: activeIndex === index ? '100%' : '0%' }}
-                                    transition={{ duration: 3 }}
-                                />
-                            </div>
-                        </motion.div>
-                    ))}
+                                {/* Active progress bar indicator */}
+                                <div className="absolute bottom-0 left-0 right-0 h-1 bg-slate-100 overflow-hidden">
+                                    <motion.div
+                                        className="h-full"
+                                        style={{ backgroundColor: stat.color }}
+                                        initial={{ width: 0 }}
+                                        animate={{ width: isSelected ? '100%' : '0%' }}
+                                        transition={{ duration: 4, ease: 'linear' }}
+                                    />
+                                </div>
+                            </motion.div>
+                        )
+                    })}
                 </div>
 
-                <div className="stats-visualization">
+                {/* Right Side 3D Visualizer */}
+                <div className="w-full lg:w-1/3 flex items-center justify-center min-h-[300px] relative">
                     <motion.div
-                        className="central-display"
+                        className="bg-white rounded-3xl border border-slate-200/80 shadow-premium p-8 w-64 h-64 flex flex-col items-center justify-center text-center z-10"
                         key={activeIndex}
-                        initial={{ scale: 0.8, opacity: 0 }}
+                        initial={{ scale: 0.9, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 0.4 }}
                     >
-                        <div className="display-icon" style={{ color: stats[activeIndex].color }}>
+                        <div 
+                            className="p-4 rounded-2xl text-white mb-4 shadow-md"
+                            style={{ backgroundColor: stats[activeIndex].color }}
+                        >
                             {stats[activeIndex].icon}
                         </div>
-                        <div className="display-value">
+                        <div className="text-4xl font-extrabold text-slate-900 tracking-tight mb-2">
                             <AnimatedNumber value={stats[activeIndex].value} />
-                            {stats[activeIndex].suffix}
+                            <span style={{ color: stats[activeIndex].color }}>{stats[activeIndex].suffix}</span>
                         </div>
-                        <div className="display-label">{stats[activeIndex].label}</div>
+                        <div className="text-sm font-semibold text-slate-700">{stats[activeIndex].label}</div>
                     </motion.div>
 
-                    <div className="orbit-rings">
+                    {/* Orbit rings animation */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none scale-90">
                         {[...Array(3)].map((_, i) => (
                             <motion.div
                                 key={i}
-                                className="orbit-ring"
+                                className="absolute border border-dashed rounded-full"
                                 animate={{ rotate: 360 }}
                                 transition={{
-                                    duration: 10 + i * 5,
+                                    duration: 12 + i * 4,
                                     repeat: Infinity,
                                     ease: "linear"
                                 }}
                                 style={{
-                                    width: `${120 + i * 40}px`,
-                                    height: `${120 + i * 40}px`,
-                                    borderColor: `${stats[activeIndex].color}40`
+                                    width: `${280 + i * 40}px`,
+                                    height: `${280 + i * 40}px`,
+                                    borderColor: `${stats[activeIndex].color}25`
                                 }}
                             />
                         ))}

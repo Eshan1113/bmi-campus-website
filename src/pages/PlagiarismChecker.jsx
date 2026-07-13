@@ -4,9 +4,6 @@ import {
   Upload,
   FileText,
   Search,
-  AlertTriangle,
-  CheckCircle,
-  XCircle,
   Download,
   Eye,
   Trash2,
@@ -14,7 +11,7 @@ import {
   Shield,
   Zap,
   Target,
-  Brain // New icon for AI detection
+  Brain
 } from 'lucide-react'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -28,7 +25,6 @@ import {
   generateConsistentSources,
   generateConsistentAIScore
 } from '../utils/plagiarismGenerator'
-import './PlagiarismChecker.css'
 
 const PlagiarismChecker = () => {
   const [activeTab, setActiveTab] = useState('upload')
@@ -126,7 +122,6 @@ const PlagiarismChecker = () => {
       const processingTime = Math.min(Math.max(wordCount * 3, 3000), 8000)
       await new Promise(resolve => setTimeout(resolve, processingTime))
 
-      // Generate consistent results
       const overallScore = generateConsistentPlagiarismScore(contentToCheck, fileIdentifier)
       const aiScore = generateConsistentAIScore(contentToCheck, fileIdentifier)
       const sources = generateConsistentSources(contentToCheck, fileIdentifier, overallScore)
@@ -135,14 +130,13 @@ const PlagiarismChecker = () => {
         id: Date.now(),
         timestamp: new Date().toISOString(),
         overallScore: overallScore,
-        aiScore: aiScore, // NEW: AI detection score
+        aiScore: aiScore,
         sources: sources,
         wordCount: wordCount,
         charCount: contentToCheck.length,
         checkedContent: checkedContent,
         originalContent: contentToCheck,
         fileIdentifier: fileIdentifier,
-        // Additional Turnitin-style data
         submissionId: `BMI${Date.now().toString().slice(-8)}`,
         studentName: 'Student Name',
         courseName: 'Course Assignment',
@@ -197,89 +191,78 @@ const PlagiarismChecker = () => {
   }
 
   return (
-    <div className="plagiarism-checker">
+    <div className="bg-slate-50 min-h-screen">
       {/* Hero Section */}
-      <section className="plagiarism-hero">
-        <div className="container">
-          <motion.div
-            className="hero-content"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="hero-badge">
-              <Shield size={16} />
-              <span>Academic Integrity & AI Detection Tool</span>
-            </div>
+      <section className="pt-16 pb-20 border-b border-slate-200/50 bg-gradient-to-br from-white via-[#f8fafc] to-accent-light/10">
+        <div className="max-w-4xl mx-auto px-4 text-center space-y-4">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/5 border border-primary/10 rounded-full text-xs font-bold text-primary">
+            <Shield size={12} />
+            <span>Academic Integrity & AI Detection Tool</span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+            Plagiarism & <span className="text-gradient">AI Checker</span>
+          </h1>
+          <p className="text-slate-550 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+            Verify the originality of academic writing and identify AI-generated content (like ChatGPT). Get comprehensive percentage matches similar to industry-standard tools.
+          </p>
 
-            <h1 className="gradient-text">Plagiarism & AI Checker</h1>
-            <p className="hero-description">
-              Comprehensive academic integrity analysis with plagiarism detection and AI-generated content identification.
-              Get detailed reports similar to industry-standard tools.
-            </p>
-
-            <div className="hero-features">
-              <div className="feature-item">
-                <Zap size={20} />
-                <span>Fast Detection</span>
-              </div>
-              <div className="feature-item">
-                <Brain size={20} />
-                <span>AI Detection</span>
-              </div>
-              <div className="feature-item">
-                <Target size={20} />
-                <span>Accurate Results</span>
-              </div>
-              <div className="feature-item">
-                <Shield size={20} />
-                <span>Secure & Private</span>
-              </div>
-            </div>
-          </motion.div>
+          <div className="flex flex-wrap justify-center gap-6 pt-4 text-xs font-semibold text-slate-555">
+            <span className="flex items-center gap-1"><Zap size={14} className="text-primary" /> Fast Analysis</span>
+            <span className="flex items-center gap-1"><Brain size={14} className="text-primary" /> AI Content Scan</span>
+            <span className="flex items-center gap-1"><Target size={14} className="text-primary" /> Match Highlight</span>
+            <span className="flex items-center gap-1"><Shield size={14} className="text-primary" /> Secure & Private</span>
+          </div>
         </div>
       </section>
 
-      {/* Main Checker Interface */}
-      <section className="checker-interface">
-        <div className="container">
-          <div className="checker-layout">
-            {/* Left Panel - Input */}
+      {/* Main Checker Section */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            {/* Input Form Panel (Left) */}
             <motion.div
-              className="input-panel glass-effect"
-              initial={{ opacity: 0, x: -50 }}
+              className="lg:col-span-6 p-6 sm:p-8 bg-white border border-slate-200/80 shadow-premium rounded-3xl space-y-6"
+              initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.6 }}
             >
-              <div className="panel-header">
-                <h3>Submit Content for Analysis</h3>
-                <div className="tab-switcher">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-100">
+                <h3 className="font-extrabold text-slate-800 text-base">Submit Academic Work</h3>
+                
+                {/* Tab selector */}
+                <div className="flex p-1 bg-slate-100 rounded-xl w-fit">
                   <button
-                    className={`tab-btn ${activeTab === 'upload' ? 'active' : ''}`}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                      activeTab === 'upload' ? 'bg-white text-primary shadow-sm' : 'text-slate-500 hover:text-slate-800'
+                    }`}
                     onClick={() => setActiveTab('upload')}
                   >
-                    <Upload size={16} />
+                    <Upload size={14} />
                     Upload File
                   </button>
                   <button
-                    className={`tab-btn ${activeTab === 'text' ? 'active' : ''}`}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                      activeTab === 'text' ? 'bg-white text-primary shadow-sm' : 'text-slate-500 hover:text-slate-800'
+                    }`}
                     onClick={() => setActiveTab('text')}
                   >
-                    <FileText size={16} />
+                    <FileText size={14} />
                     Paste Text
                   </button>
                 </div>
               </div>
 
-              <div className="input-content">
+              {/* Sub-component Area */}
+              <div className="min-h-[220px]">
                 <AnimatePresence mode="wait">
                   {activeTab === 'upload' ? (
                     <motion.div
                       key="upload"
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.3 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
                     >
                       <FileUploadZone
                         onFileUpload={handleFileUpload}
@@ -291,10 +274,10 @@ const PlagiarismChecker = () => {
                   ) : (
                     <motion.div
                       key="text"
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.3 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
                     >
                       <TextInputArea
                         value={textInput}
@@ -305,31 +288,31 @@ const PlagiarismChecker = () => {
                 </AnimatePresence>
               </div>
 
-              <div className="action-buttons">
-                <motion.button
-                  className="btn-primary check-btn"
+              {/* Actions row */}
+              <div className="pt-4 border-t border-slate-100 flex items-center gap-4">
+                <button
+                  className="flex-grow py-3 bg-primary hover:bg-primary-dark text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-md shadow-primary/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   onClick={handlePlagiarismCheck}
                   disabled={isChecking}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
                 >
                   {isChecking ? (
                     <>
-                      <RefreshCw size={20} className="spinning" />
-                      Analyzing...
+                      <RefreshCw size={18} className="animate-spin" />
+                      Analyzing content...
                     </>
                   ) : (
                     <>
-                      <Search size={20} />
-                      Check Plagiarism & AI
+                      <Search size={18} />
+                      Analyze Plagiarism & AI
                     </>
                   )}
-                </motion.button>
+                </button>
 
                 <button
-                  className="btn-secondary reset-btn"
+                  className="px-4 py-3 border border-slate-200 text-slate-500 hover:text-slate-800 hover:bg-slate-50 rounded-xl font-bold text-sm flex items-center gap-1.5 transition-colors disabled:opacity-50"
                   onClick={resetChecker}
                   disabled={isChecking}
+                  title="Reset analysis fields"
                 >
                   <Trash2 size={16} />
                   Reset
@@ -337,12 +320,12 @@ const PlagiarismChecker = () => {
               </div>
             </motion.div>
 
-            {/* Right Panel - Results */}
+            {/* Results Panel (Right) */}
             <motion.div
-              className="results-panel"
-              initial={{ opacity: 0, x: 50 }}
+              className="lg:col-span-6 h-full"
+              initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
             >
               {results ? (
                 <PlagiarismResults
@@ -350,69 +333,91 @@ const PlagiarismChecker = () => {
                   onDownloadReport={handleDownloadReport}
                 />
               ) : (
-                <div className="no-results glass-effect">
-                  <div className="no-results-content">
-                    <div className="analysis-icons">
-                      <Search size={48} className="no-results-icon" />
-                      <Brain size={32} className="ai-icon" />
+                <div className="p-8 border border-slate-200/80 bg-white shadow-premium rounded-3xl min-h-[420px] flex flex-col items-center justify-center text-center">
+                  <div className="relative mb-6">
+                    <div className="p-5 rounded-full bg-slate-50 text-slate-400 border border-slate-100 shadow-inner">
+                      <Search size={40} />
                     </div>
-                    <h3>Ready to Analyze</h3>
-                    <p>Upload a document or paste text to begin plagiarism and AI detection analysis</p>
-                    <div className="analysis-features">
-                      <div className="feature">
-                        <Shield size={16} />
-                        <span>Plagiarism Detection</span>
-                      </div>
-                      <div className="feature">
-                        <Brain size={16} />
-                        <span>AI Content Detection</span>
-                      </div>
+                    <div className="absolute bottom-[-4px] right-[-4px] p-2 bg-primary/10 border border-primary/20 text-primary rounded-full animate-bounce">
+                      <Brain size={20} />
                     </div>
                   </div>
+                  <h3 className="font-extrabold text-slate-850 text-lg mb-2">Ready to Analyze</h3>
+                  <p className="text-xs text-slate-500 max-w-sm leading-relaxed">
+                    Upload your docx/pdf assignments or copy and paste raw text on the left, then click the analyze button to trigger integrity metrics.
+                  </p>
                 </div>
               )}
             </motion.div>
           </div>
 
-          {/* Check History */}
+          {/* Analysis History Section */}
           {checkHistory.length > 0 && (
             <motion.div
-              className="check-history glass-effect"
-              initial={{ opacity: 0, y: 50 }}
+              className="mt-12 p-6 bg-white border border-slate-200/80 shadow-premium rounded-3xl space-y-6"
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h3>Recent Analysis</h3>
-              <div className="history-list">
-                {checkHistory.map((check, index) => (
-                  <div key={check.id} className="history-item">
-                    <div className="history-info">
-                      <span className="history-title">{check.checkedContent}</span>
-                      <span className="history-date">
-                        {new Date(check.timestamp).toLocaleDateString()} - {check.wordCount} words
-                      </span>
-                    </div>
-                    <div className="history-scores">
-                      <div className={`history-score plagiarism ${check.overallScore > 10 ? 'high' : check.overallScore > 5 ? 'medium' : 'low'}`}>
-                        <span className="score-label">Plagiarism</span>
-                        <span className="score-value">{check.overallScore}%</span>
-                      </div>
-                      <div className={`history-score ai ${check.aiScore > 3 ? 'high' : check.aiScore > 1 ? 'medium' : 'low'}`}>
-                        <span className="score-label">AI</span>
-                        <span className="score-value">{check.aiScore}%</span>
-                      </div>
-                    </div>
-                    <button
-                      className="history-view"
-                      onClick={() => setResults(check)}
-                    >
-                      <Eye size={16} />
-                    </button>
-                  </div>
-                ))}
+              <h3 className="font-extrabold text-slate-850 text-base">Recent Reports</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs border-collapse">
+                  <thead>
+                    <tr className="border-b border-slate-100 text-slate-400 font-bold uppercase tracking-wider">
+                      <th className="pb-3 pl-4">Submission Document</th>
+                      <th className="pb-3">Checked Date</th>
+                      <th className="pb-3 text-center">Plagiarism Score</th>
+                      <th className="pb-3 text-center">AI Score</th>
+                      <th className="pb-3 pr-4 text-right">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {checkHistory.map((check) => {
+                      const isPlagHigh = check.overallScore > 20
+                      const isAIHigh = check.aiScore > 20
+
+                      return (
+                        <tr key={check.id} className="border-b border-slate-100/50 hover:bg-slate-50/50 transition-colors">
+                          <td className="py-4 pl-4 font-bold text-slate-800">{check.checkedContent}</td>
+                          <td className="py-4 text-slate-500">{new Date(check.timestamp).toLocaleDateString()}</td>
+                          
+                          {/* Plagiarism Score pill */}
+                          <td className="py-4 text-center">
+                            <span className={`inline-block px-2.5 py-1 rounded-full font-bold text-[10px] ${
+                              isPlagHigh ? 'bg-rose-50 text-rose-600' : 'bg-emerald-50 text-emerald-600'
+                            }`}>
+                              {check.overallScore}% Match
+                            </span>
+                          </td>
+
+                          {/* AI score pill */}
+                          <td className="py-4 text-center">
+                            <span className={`inline-block px-2.5 py-1 rounded-full font-bold text-[10px] ${
+                              isAIHigh ? 'bg-amber-50 text-amber-600' : 'bg-emerald-50 text-emerald-600'
+                            }`}>
+                              {check.aiScore}% AI
+                            </span>
+                          </td>
+
+                          {/* View details */}
+                          <td className="py-4 pr-4 text-right">
+                            <button
+                              onClick={() => setResults(check)}
+                              className="p-1.5 rounded-lg border border-slate-200 hover:bg-slate-100 hover:border-slate-300 text-slate-650 transition-colors"
+                              title="Restore report results"
+                            >
+                              <Eye size={14} />
+                            </button>
+                          </td>
+                        </tr>
+                      )
+                    })}
+                  </tbody>
+                </table>
               </div>
             </motion.div>
           )}
+
         </div>
       </section>
 
