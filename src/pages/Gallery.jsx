@@ -9,51 +9,83 @@ const Gallery = () => {
     const images = [
         {
             id: 1,
-            url: 'https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=600&fit=crop',
-            title: 'Campus Main Entrance & Building',
-            category: 'Architecture'
+            url: 'image/2024/489868029_1697889801036880_4011985048527441810_n.jpg',
+           
         },
         {
             id: 2,
-            url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop',
-            title: 'Modern Academic Library',
-            category: 'Facilities'
+            url: 'image/2024/489877858_1697888831036977_1563440393688646331_n.jpg',
+        
         },
         {
             id: 3,
-            url: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&h=600&fit=crop',
-            title: 'Science & BioTech Laboratory',
-            category: 'Labs'
+            url: 'image/2024/489895000_1697889927703534_2289421801703900681_n.jpg',
+            
         },
         {
             id: 4,
-            url: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop',
-            title: 'Student Commons & Lounge Area',
-            category: 'Student Life'
+            url: 'image/2024/489888515_1697889984370195_4980102217417478546_n.jpg',
+          
         },
         {
             id: 5,
-            url: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&h=600&fit=crop',
-            title: 'Spacious Lecture Hall',
-            category: 'Classrooms'
+            url: 'image/2024/490652856_1697890091036851_1674521376843106772_n.jpg',
+      
         },
         {
             id: 6,
-            url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop',
-            title: 'Vibrant Campus Courtyard',
-            category: 'Outdoor'
+            url: 'image/2024/490655048_1697889924370201_4899216367099649662_n.jpg',
+           
         },
         {
             id: 7,
-            url: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop',
-            title: 'Collaborative Study Groups',
-            category: 'Student Life'
+            url: 'image/2024/490667103_1697888764370317_4310209377303896667_n.jpg',
+            
         },
         {
             id: 8,
-            url: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop',
-            title: 'High-Speed Computer Laboratory',
-            category: 'Labs'
+            url: 'image/2024/490679679_1697889944370199_2366898265973101914_n.jpg',
+           
+        },
+        {
+            id: 9,
+            url: 'image/2024/490768786_1697889951036865_4072620445188414262_n.jpg',
+           
+        },
+        {
+            id: 10,
+            url: 'image/2024/490843825_1697888767703650_8706063944879520952_n.jpg',
+           
+        },
+        {
+            id: 11,
+            url: 'image/2024/DSC_4537.JPG',
+           
+        },
+        {
+            id: 12,
+            url: 'image/2024/DSC_4618.JPG',
+           
+        },
+        {
+            id: 13,
+            url: 'image/2024/IMG_0252.JPG',
+           
+        },
+        {
+            id: 14,
+            url: 'image/2024/IMG_0282.JPG',
+           
+        },
+        {
+            id: 15,
+            url: 'image/2024/IMG_0287.JPG',
+           
+        },
+        {
+            id: 16,
+            url: 'image/2024/IMG_3804.JPG',
+           
         }
     ]
 

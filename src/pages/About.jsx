@@ -21,25 +21,13 @@ const About = () => {
     const [visibleStats, setVisibleStats] = useState(false)
     const [currentCEO, setCurrentCEO] = useState(0)
 
-    const ceoImages = [
-        "ceo.jpg",
-        "image/2025/623257098_1942790736546784_5479781099705082577_n.jpg",
-        "image/2024/490768786_1697889951036865_4072620445188414262_n.jpg"
-    ]
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentCEO((prev) => (prev + 1) % ceoImages.length)
-        }, 3000)
-
-        return () => clearInterval(timer)
-    }, [])
+    
 
     const timelineEvents = [
         {
             year: '2002',
             title: 'Foundation',
-            description: 'IBA Campus established in the historic city of Kandy, Sri Lanka, launching with computing and business courses.',
+            description: 'BMI Campus established in the historic city of Kandy, Sri Lanka, launching with computing and business courses.',
             icon: <BookOpen size={20} />
         },
         {
@@ -141,7 +129,7 @@ const About = () => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2, duration: 0.8 }}
                     >
-                        Established in 2002, BMI Campus (originally IBA Campus) is one of Kandy's most distinguished private institutions. Dedicated to delivering high-quality, accessible tertiary education, we've spent over two decades equipping students with globally-competitive skills.
+                        Established in 2002, BMI Campus is one of Kandy's most distinguished private institutions. Dedicated to delivering high-quality, accessible tertiary education, we've spent over two decades equipping students with globally-competitive skills.
                     </motion.p>
 
                     {/* Quick Stats Summary */}
@@ -231,42 +219,11 @@ const About = () => {
                         </motion.div>
                     </div>
                 </div>
-            </section>
-
-
-            {/* Message from Chairman */}
-            <section className="py-24 bg-slate-50 border-t border-slate-200/50">
+                <section className="py-24 bg-slate-50 border-t border-slate-200/50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <motion.div
-                        className="bg-white rounded-3xl border border-slate-200/80 shadow-premium overflow-hidden grid grid-cols-1 lg:grid-cols-12"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                    >
-                        {/* Chairman Photo */}
-                        <div className="lg:col-span-5 relative min-h-[350px] lg:min-h-full bg-slate-950">
-                            <AnimatePresence mode="wait">
-                                <motion.img
-                                    key={currentCEO}
-                                    src={ceoImages[currentCEO]}
-                                    alt="Chairman / CEO Mr. Sisira Wickramasinghe"
-                                    className="w-full h-full object-cover object-top opacity-90 absolute inset-0"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.8 }}
-                                />
-                            </AnimatePresence>
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent flex flex-col justify-end p-8" />
-                            <div className="absolute bottom-6 left-6 right-6 text-white z-10">
-                                <h4 className="text-lg font-bold text-white">Mr. Sisira Wickramasinghe</h4>
-                                <span className="text-xs text-slate-350 font-medium block mt-0.5">Chairman / CEO</span>
-                                <span className="text-[9px] text-slate-400 block mt-2 font-medium leading-relaxed uppercase text-white">
-                                    M.Com(R)(KLN), MBA(Malaysia), B.Sc. Business Admin (USJP)
-                                </span>
-                            </div>
-                        </div>
+                    
+                  
+                      
 
                         {/* Message Details */}
                         <div className="lg:col-span-7 p-6 sm:p-8 space-y-4 flex flex-col justify-between">
@@ -296,9 +253,14 @@ const About = () => {
                                 </div>
                             </div>
                         </div>
-                    </motion.div>
+                  
                 </div>
             </section>
+            </section>
+
+
+            {/* Message from Chairman */}
+            
         </div>
     )
 }

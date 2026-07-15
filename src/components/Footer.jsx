@@ -32,7 +32,7 @@ const Footer = () => {
             </span>
           </Link>
           <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-            BMI Campus (formerly IBA Campus), established in 2002 in the historic city of Kandy, is one of Sri
+            BMI Campus  established in 2002 in the historic city of Kandy, is one of Sri
             Lanka's premier private higher education institutions, offering world-class academic programs.
           </p>
           <div className="flex space-x-3">
