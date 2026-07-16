@@ -17,11 +17,44 @@ import {
   ChevronLeft,
   ChevronRight,
   Library,
+  Users,
+  TrendingUp,
+  Globe2,
+  Briefcase,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import FloatingCourses from '../components/FloatingCourses'
 
-import InteractiveStats from '../components/InteractiveStats'
+const impactStats = [
+  {
+    icon: Users,
+    value: '241+',
+    delta: '+12%',
+    label: 'Students Enrolled',
+    desc: 'Active learners pursuing their higher education goals',
+  },
+  {
+    icon: TrendingUp,
+    value: '23%',
+    delta: '+5%',
+    label: 'Success Rate',
+    desc: 'Graduates successfully completing their degrees',
+  },
+  {
+    icon: Globe2,
+    value: '3+',
+    delta: '+3',
+    label: 'Global Partners',
+    desc: 'Renowned international university collaborations',
+  },
+  {
+    icon: Briefcase,
+    value: '22%',
+    delta: '+4%',
+    label: 'Employment Rate',
+    desc: 'Graduates securing employment within six months',
+  },
+]
 
 const heroSlides = [
   {
@@ -339,9 +372,57 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Interactive Stats Section */}
-      <section className="py-12 bg-slate-50 border-y border-slate-200/50">
-        <InteractiveStats />
+      {/* Impact Stats Section */}
+      <section className="relative py-24 bg-slate-50 border-y border-slate-200/50 overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.5] pointer-events-none"
+          style={{
+            backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)',
+            backgroundSize: '22px 22px',
+            color: '#e2e8f0',
+          }}
+        />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="max-w-2xl mx-auto text-center mb-14"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <SectionEyebrow tone="light">Our Impact</SectionEyebrow>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4">Growing Every Year</h2>
+            <p className="text-slate-500 mt-4 text-sm sm:text-base">
+              Real numbers behind the BMI Campus community — and where we're headed next.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {impactStats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                className="relative p-7 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-premium hover:-translate-y-1.5 transition-all duration-300"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="flex items-start justify-between mb-5">
+                  <div className="w-12 h-12 rounded-2xl bg-primary/5 text-primary flex items-center justify-center">
+                    <stat.icon size={22} />
+                  </div>
+                  <span className="inline-flex items-center gap-0.5 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">
+                    <TrendingUp size={11} />
+                    {stat.delta}
+                  </span>
+                </div>
+                <h3 className="text-4xl font-extrabold text-slate-900 tracking-tight">{stat.value}</h3>
+                <p className="text-sm font-bold text-slate-800 mt-2">{stat.label}</p>
+                <p className="text-xs text-slate-500 leading-relaxed mt-1.5">{stat.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Popular Programs Section */}

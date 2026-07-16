@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react'
-
+import FloatingCourses from '../components/FloatingCourses'
 const Contact = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -192,6 +192,8 @@ const Contact = () => {
                     </div>
                 </div>
             </section>
+            {/* Floating WhatsApp Button */}
+            <FloatingCourses />
         </div>
     )
 }

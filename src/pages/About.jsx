@@ -15,6 +15,7 @@ import {
     Star,
     TrendingUp
 } from 'lucide-react'
+import FloatingCourses from '../components/FloatingCourses'
 
 const About = () => {
     const [activeTimeline, setActiveTimeline] = useState(0)
@@ -260,7 +261,8 @@ const About = () => {
 
 
             {/* Message from Chairman */}
-            
+                {/* Sticky Floating Courses widget */}
+                  <FloatingCourses />
         </div>
     )
 }

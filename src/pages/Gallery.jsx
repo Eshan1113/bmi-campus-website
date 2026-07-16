@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight, Eye, Image } from 'lucide-react'
+import FloatingCourses from '../components/FloatingCourses'
 
 const Gallery = () => {
     const [selectedImage, setSelectedImage] = useState(null)
@@ -386,6 +387,8 @@ const Gallery = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
+            {/* Floating WhatsApp Button */}
+            <FloatingCourses />
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { IdCard, Search, BadgeCheck, CalendarDays, BookOpen, User } from 'lucide-react'
-
+import FloatingCourses from '../components/FloatingCourses'
 const Student = () => {
   const [studentNumber, setStudentNumber] = useState('')
   const [submittedNumber, setSubmittedNumber] = useState('')
@@ -100,6 +100,8 @@ const Student = () => {
           </motion.div>
         </div>
       </section>
+      {/* Floating WhatsApp Button */}
+      <FloatingCourses />
     </div>
   )
 }
