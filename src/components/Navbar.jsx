@@ -113,7 +113,7 @@ const Navbar = () => {
             >
               <img src="/logo.jpg" alt="BMI Campus" className="h-7 w-auto object-contain" />
               <span className="hidden sm:flex flex-col leading-tight border-l border-slate-200 pl-3">
-                <span className="text-[10px] font-bold tracking-[0.15em] text-accent-dark uppercase">Est. 2002</span>
+                <span className="text-[10px] font-bold tracking-[0.15em] text-accent-dark uppercase">Est. 2015</span>
                 <span className="text-[11px] text-slate-400">Kandy, Sri Lanka</span>
               </span>
             </Link>

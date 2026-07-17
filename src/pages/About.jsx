@@ -26,7 +26,7 @@ const About = () => {
 
     const timelineEvents = [
         {
-            year: '2002',
+            year: '2015',
             title: 'Foundation',
             description: 'BMI Campus established in the historic city of Kandy, Sri Lanka, launching with computing and business courses.',
             icon: <BookOpen size={20} />
@@ -130,7 +130,7 @@ const About = () => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2, duration: 0.8 }}
                     >
-                        Established in 2002, BMI Campus is one of Kandy's most distinguished private institutions. Dedicated to delivering high-quality, accessible tertiary education, we've spent over two decades equipping students with globally-competitive skills.
+                        Established in 2015, BMI Campus is one of Kandy's most distinguished private institutions. Dedicated to delivering high-quality, accessible tertiary education, we've spent over two decades equipping students with globally-competitive skills.
                     </motion.p>
 
                     {/* Quick Stats Summary */}
@@ -246,7 +246,7 @@ const About = () => {
                             <div className="border-t border-slate-100 pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                                 <div className="text-xs text-slate-500 font-semibold flex items-center gap-1">
                                     <Calendar size={14} className="text-primary" />
-                                    <span>BMI Campus — Delivering Knowledge Since 2002</span>
+                                    <span>BMI Campus — Delivering Knowledge Since 2015</span>
                                 </div>
                                 <div className="flex items-center gap-4 text-xs font-semibold uppercase tracking-wider text-slate-400">
                                     <span className="flex items-center gap-1.5"><Star size={12} className="text-accent-dark" /> Quality</span>

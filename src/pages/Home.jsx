@@ -235,7 +235,7 @@ const CampusSeal = ({ size = 128, className = '' }) => (
       <circle cx="100" cy="100" r="70" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.35" />
       <text fontSize="10.5" fontWeight="700" letterSpacing="3.5" fill="currentColor">
         <textPath href="#sealPath" startOffset="0%">
-          BMI CAMPUS • ESTABLISHED 2002 • KANDY SRI LANKA •
+          BMI CAMPUS • ESTABLISHED 2015 • KANDY SRI LANKA •
         </textPath>
       </text>
     </motion.svg>

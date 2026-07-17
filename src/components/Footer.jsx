@@ -27,12 +27,12 @@ const Footer = () => {
           <Link to="/" className="flex items-center gap-3">
             <img src="/logo.jpg" alt="BMI Campus Logo" className="h-12 w-auto rounded-lg brightness-110" />
             <span className="flex flex-col leading-tight border-l border-slate-800 pl-3">
-              <span className="text-[10px] font-bold tracking-[0.15em] text-accent uppercase">Est. 2002</span>
+              <span className="text-[10px] font-bold tracking-[0.15em] text-accent uppercase">Est. 2015</span>
               <span className="text-[11px] text-slate-500">Kandy, Sri Lanka</span>
             </span>
           </Link>
           <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-            BMI Campus  established in 2002 in the historic city of Kandy, is one of Sri
+            BMI Campus  established in 2015 in the historic city of Kandy, is one of Sri
             Lanka's premier private higher education institutions, offering world-class academic programs.
           </p>
           <div className="flex space-x-3">
